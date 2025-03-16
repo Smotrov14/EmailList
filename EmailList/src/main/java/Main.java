@@ -19,15 +19,23 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        
+        EmailList list = new EmailList();
         while (true) {
             String input = scanner.nextLine();
             if (input.equals("0")) {
                 break;
             }
-            
-            //TODO: write code here
-            
+            String[] parts = input.split(" ", 2);
+            String action = parts[0];
+            String email = (parts.length > 1) ? parts[1] : null;
+            if(action.equals("ADD")){
+                    list.add(email);
+
+            } else if (action.equals("LIST")) {
+                for(String resulr : list.getSortedEmails()){
+                    System.out.println(resulr);
+                }
+            }
         }
     }
 }
